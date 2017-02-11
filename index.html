@@ -1,0 +1,85 @@
+
+	<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+	<style>
+	html
+	{ 
+		/* kill all that text highlighting */
+		-webkit-user-select: none;  /* Chrome all / Safari all */
+		-moz-user-select: none;     /* Firefox all */
+		-ms-user-select: none;      /* IE 10+ */
+		user-select: none;  
+		-webkit-tap-highlight-color: rgba(0,0,0,0); 
+
+	}
+
+	</style>
+
+	<!--link href="/css/bootstrap.min.css" rel="stylesheet"-->
+
+	<html>
+		<title> Trumphands! </title>
+		<head>
+			<div><i>Trump hand test page- are your hands bigger than donald trump's? </i></div>
+		</head>
+		<body>
+			<div style="height: 100%; background-color: gray;" id = "maindiv">
+			Body
+			</div>
+		</body>
+	</html>
+	
+	<script type="text/javascript">
+	
+	
+	function process(input)
+	{
+			console.log(input)
+
+			//$("#maindiv").append(
+			//'<div style="left:'+input.pageX
+			//+'px;top:' +input.pageY+ 'px;height: 20px; width:20px; background-color: red; position: absolute;" </div>');
+			
+			if(input.changedTouches.lengh>1)
+			{
+			for( var i in input.changedTouches)
+			{
+				$("#maindiv").append('<p>' + i +'</p>');
+			}
+			}
+			
+	}
+	
+	
+	$( function()
+	{
+		$("#maindiv").bind("touchstart", function(e) 
+		{
+			process(e);
+			
+		})
+		
+		.bind("click", function(e) 
+		{
+			process(e)
+			
+		})
+		
+		.bind("touchmove", function(e) 
+		{
+			process(e)
+			
+		})
+		
+		.bind("touchend", function(e) 
+		{
+			process(e)
+			
+		})
+		.bind("touchcancel", function(e) 
+		{
+			process(e)
+			
+		})
+		
+	})
+	</script>
